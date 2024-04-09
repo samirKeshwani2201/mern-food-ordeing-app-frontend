@@ -4,7 +4,6 @@ import UserProflieForm from "@/forms/user-profile-form/UserProflieForm";
 const UserProfliePage = () => {
   const { isLoading: isGetLoading, currentUser } = useGetMyUser();
   const { isLoading: isUpdateLoading, updateUser } = useUpdateMyUser();
-
   if (isGetLoading) {
     return <span>Loading...</span>;
   }

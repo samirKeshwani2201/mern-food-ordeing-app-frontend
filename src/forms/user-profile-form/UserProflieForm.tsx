@@ -1,4 +1,4 @@
-import LoginButton from "@/components/LoginButton";
+import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -126,14 +126,7 @@ const UserProflieForm = ({ onSave, isLoading, currentUser }: Props) => {
             )}
           />
         </div>
-
-        {isLoading ? (
-          <LoginButton />
-        ) : (
-          <Button type="submit" className="bg-orange-500">
-            Submit
-          </Button>
-        )}
+        {isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button>}
       </form>
     </Form>
   );

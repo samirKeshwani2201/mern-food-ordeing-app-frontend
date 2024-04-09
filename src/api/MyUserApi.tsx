@@ -122,6 +122,8 @@ export const useUpdateMyUser = () => {
     // clears the error state from this request
     reset();
   }
+
+  
   return {
     updateUser,
     isLoading,
