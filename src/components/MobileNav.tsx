@@ -34,6 +34,7 @@ const MobileNav = () => {
         <Separator />
         <SheetDescription className="flex flex-col gap-4">
           {isAuthenticated ? (
+            
             <MobileNavLinks />
           ) : (
             <Button
