@@ -17,8 +17,7 @@
         hasCreatedUser.current = true;   
         }
         navigate("/");
-    }, [createUser, navigate, user]);
-
+    }, [createUser, navigate, user]); 
     return <>Loading...</>;
     };
 

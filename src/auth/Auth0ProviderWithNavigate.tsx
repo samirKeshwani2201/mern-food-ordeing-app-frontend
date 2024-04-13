@@ -1,4 +1,4 @@
-import { Auth0Provider } from "@auth0/auth0-react";
+import { AppState, Auth0Provider } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 type Props = {
   children: React.ReactNode;
@@ -14,11 +14,11 @@ const Auth0ProviderWithNavigate = ({ children }: Props) => {
   if (!domain || !clientId || !redirectUri || !audience) {
     throw new Error("unable to initialise auth");
   }
-  const onRedirectCallback = () => {
+  const onRedirectCallback = (appState?: AppState) => {
     // appState contains some data which may be required when user gets redirected eg before login on which url the user was can be stored
     // console.log("USER ", user);
     // token cant be get here as its in auth and this is outside of auth0provider so we created a callback page here
-    navigate("/auth-callback");
+    navigate(appState?.returnTo|| "/auth-callback");
   };
   return (
     <Auth0Provider

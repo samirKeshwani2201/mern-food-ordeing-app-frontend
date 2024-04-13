@@ -71,7 +71,13 @@ const SearchPage = () => {
   }
 
   if (!results?.data || !city) {
-    return <span>No results found </span>;
+    return (
+      <div className="flex flex-col space-y-4">
+        <div className="h-6 bg-gray-300 animate-pulse"></div>
+        <div className="h-6 bg-gray-300 animate-pulse"></div>
+        <div className="h-6 bg-gray-300 animate-pulse"></div>
+      </div>
+    );
   }
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">

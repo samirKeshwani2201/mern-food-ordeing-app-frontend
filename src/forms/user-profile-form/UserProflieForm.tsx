@@ -24,15 +24,23 @@ const formSchema = z.object({
   country: z.string().min(1, "Country is  requried"),
 });
 
-type UserFormData = z.infer<typeof formSchema>;
+export type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
   onSave: (userProfileData: UserFormData) => void;
   isLoading: boolean;
   currentUser: User;
+  title?: string;
+  buttonText?: string;
 };
 
-const UserProflieForm = ({ onSave, isLoading, currentUser }: Props) => {
+const UserProflieForm = ({
+  title = "User Profile Form",
+  buttonText = "Submit",
+  onSave,
+  isLoading,
+  currentUser,
+}: Props) => {
   // basically connected the zod framework and react hook form
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
@@ -50,7 +58,7 @@ const UserProflieForm = ({ onSave, isLoading, currentUser }: Props) => {
         className="space-y-4 bg-gray-50 rounded-lg md:p-10"
       >
         <div>
-          <h2 className="text-2xl font-bold">User Profile Form</h2>
+          <h2 className="text-2xl font-bold">{title}</h2>
           <FormDescription>
             View and change your profile information here
           </FormDescription>
@@ -126,7 +134,13 @@ const UserProflieForm = ({ onSave, isLoading, currentUser }: Props) => {
             )}
           />
         </div>
-        {isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button>}
+        {isLoading ? (
+          <LoadingButton />
+        ) : (
+          <Button className="bg-orange-500" type="submit">
+            {buttonText}
+          </Button>
+        )}
       </form>
     </Form>
   );
